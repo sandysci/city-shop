@@ -1,0 +1,159 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title [innerHTML]="product.price_html"></ion-title>
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content no-padding>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+        <h4 [innerHTML]="product.name"></h4>
+        <p class="tit" [innerHTML]="product.price_html"></p>
+      </ion-card-title>
+
+      <ion-card style="box-shadow: none">
+        <ion-slides autoplay="3000">
+          <ion-slide *ngFor="let image of product.images">
+            <img [src]="image.src" alt="">
+          </ion-slide>
+        </ion-slides>
+      </ion-card>
+
+      <form [formGroup]="productForm" novalidate (ngSubmit)="addToCart(product)">
+        <ion-list>
+          <ion-item *ngIf="size.length > 1">
+            <ion-label>Size</ion-label>
+            <ion-select formControlName="size" id="size">
+              <ion-option *ngFor="let s of size">{{s}}</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="color.length > 1">
+            <ion-label>Color</ion-label>
+            <ion-select formControlName="color" id="color">
+              <ion-option *ngFor="let c of color">{{c}}</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Quantity</ion-label>
+            <ion-select formControlName="qty" id="qty">
+              <ion-option [value]="1" (ionSelect)="getQty($event)">1</ion-option>
+              <ion-option [value]="2" (ionSelect)="getQty($event)">2</ion-option>
+              <ion-option [value]="3" (ionSelect)="getQty($event)">3</ion-option>
+              <ion-option [value]="4" (ionSelect)="getQty($event)">4</ion-option>
+              <ion-option [value]="5" (ionSelect)="getQty($event)">5</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-chip style="width: 100%; text-align: center; background-color: rgba(54, 53, 99, 0.5)">
+            <ion-label color="primary">Payment options are selectable in checkout</ion-label>
+          </ion-chip>
+
+          <ion-row class="price-container">
+            <ion-col>
+              <h4 class="total-text">Total</h4>
+            </ion-col>
+          </ion-row>
+          <ion-row class="price-container">
+            <ion-col>
+              <h4 [innerHTML]="product.price_html" class="total-cost"></h4>
+            </ion-col>
+          </ion-row>
+
+          <button ion-button icon-left block outline color="primary" (click)="addToCart(product)" class="buy-button">
+            <ion-icon name="basket"></ion-icon>
+            Add to cart for &pound;<span [innerHTML]="productPrice | number : '1.2-2'"></span>
+            <!-- Add to cart for &nbsp;<span [innerHTML]="product.price_html"></span> -->
+          </button>
+
+          <button ion-button icon-left block clear color="secondary">
+            <ion-icon name="md-heart"></ion-icon>
+            Save for later
+          </button>
+        </ion-list>
+      </form>
+    </ion-card-content>
+
+    <ion-card-content>
+      <ion-card-title>
+        <ion-row>
+          <ion-col>
+            <h4>Description</h4>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col *ngIf="truncating && product.description.length > limit">
+            <p [innerHTML]="product.description | truncate : limit"></p>
+            <button ion-button block color="light" (click)="truncating = false">
+              show more
+            </button>
+          </ion-col>
+          <ion-col *ngIf="!truncating && product.description.length > limit">
+            <p [innerHTML]="product.description"></p>
+            <button ion-button block color="light" (click)="truncating = true">
+              show less
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab right top edge (click)="openCart()">
+    <button ion-fab color="light">
+      <ion-icon name="cart" color="primary"></ion-icon>
+      <!-- <ion-badge>1</ion-badge> -->
+    </button>
+  </ion-fab>
+
+  <!-- <ion-card>
+    <ion-slides autoplay="3000">
+      <ion-slide *ngFor="let image of product.images">
+        <img [src]="image.src" alt="">
+      </ion-slide>
+    </ion-slides>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{product.name}} &nbsp;
+        <ion-chip *ngFor="let cat of product.categories" style="margin-left: 5px;">
+          <ion-label color="danger">{{cat.name}}</ion-label>
+        </ion-chip>
+      </ion-card-title>
+
+      <p [innerHTML]="product.description"></p>
+
+      <button ion-button icon-left block outline color="danger" (click)="addToCart(product)">
+        <ion-icon name="basket"></ion-icon> Add to cart for &pound;{{product.price}}
+      </button>
+
+    </ion-card-content>
+
+  </ion-card> -->
+
+  <!-- <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+        Specifications
+      </ion-card-title>
+
+      <ion-grid>
+        <ion-row *ngFor="let att of product.attributes">
+          <ion-col col-4>
+            {{att.name}}
+          </ion-col>
+          <ion-col col-8>
+            <span *ngFor="let option of att.options">{{option}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card> -->
+
+</ion-content>

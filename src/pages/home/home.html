@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle icon-only item-left>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openCart()">
+        <ion-icon name="cart" right></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+
+  <ion-card no-padding>
+
+    <!-- <ion-slides autoplay="5000" loop="true" speed="500" pager (ionSlideDidChange)="slideChanged()" #bannerSlides> -->
+      <ion-slides autoplay="5000" loop="true" speed="500" pager>
+      <ion-slide>
+        <img src="assets/imgs/belts.jpg" />
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/belt.jpg" alt="">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/cool.jpg" alt="">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/bag.jpg" alt="">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/light.jpg" alt="">
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+
+  <ion-card style="box-shadow: none;">
+    <ion-grid style="border-bottom: 1px solid grey">
+      <ion-row class="featured">
+        <ion-col>
+          <h3 class="home-title">THE CITYSHOP EXPERIENCE</h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card (click)="openShop()">
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col>
+          <img src="assets/imgs/soft.jpg" alt="">
+          <div class="text-container">
+            <h2 class="text">Shop Now</h2>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card (click)="openAccount()">
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col>
+          <img src="assets/imgs/softer.jpg" alt="">
+          <div class="text-container">
+            <h2 class="text">My Account</h2>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card (click)="opanBrandNew()">
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col>
+          <img src="assets/imgs/watch.jpg" alt="">
+          <div class="text-container">
+            <h2 class="text">Brand New</h2>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>

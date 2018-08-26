@@ -1,0 +1,64 @@
+page-card-payment {
+    
+    ion-input {
+        background-color: map-get($colors, light);
+        padding-left: 10px;
+        color: #6c6c6c;
+    }
+
+    ion-label {
+        color: #6c6c6c;
+    }
+
+    [floating] {
+        margin-left: 10px;
+    }
+
+    button {
+        float: right;
+        margin-right: 20px;
+    }
+
+    button.disabled {
+        cursor: not-allowed;
+        background: grey !important;
+    }
+
+    .list-md .item-input:last-child {
+        border-bottom: none;
+    }
+
+    .form-error-container {
+
+        .input-wrapper {
+            // margin: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .form-error {
+            color: red;
+            font-size: 11px;
+            font-weight: normal;
+        }
+    }
+
+    form {
+
+        .form-group {
+            padding: 20px;
+            padding-bottom: 0;
+
+            label {
+                display: block;
+                font-size: 18px;
+            }
+
+            input {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    }
+
+}
